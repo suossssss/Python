@@ -1,0 +1,117 @@
+
+# You can run this program in this URL http://www.codeskulptor.org/#user40_w72eiGxVbH_5.py
+
+# template for "Guess the number" mini-project
+# input will come from buttons and an input field
+# all output for the game will be printed in the console
+import simplegui
+import random
+
+secret_number=random.randrange(0, 100)
+count=0
+# helper function to start and restart the game
+def new_game():
+    global secret_number
+    global count
+    count=0
+    # initialize global variables used in your code here
+
+   
+
+
+    # define event handlers for control panel
+
+def range100():
+    print "                 "
+    global secret_number
+    secret_number=random.randrange(0, 100)
+    global count
+    count=0
+    print "New game. Range is [0,100)"
+    print "Number of remaining guesses is  7"
+    
+    # button that changes the range to [0,100) and starts a new game 
+    
+   
+   
+
+def range1000():
+    print "                 "
+    global secret_number
+    secret_number=random.randrange(0, 1000)
+    global count
+    count=0
+    print "New game. Range is [0,1000)"
+    print "Number of remaining guesses is  10"
+    # button that changes the range to [0,1000) and starts a new game     
+    
+   
+   
+
+    
+def input_guess(guess):
+    print "                 "    
+    g=int(guess)
+    print "Guess was",g
+    global count 
+    if secret_number<100:
+       
+        count+=1
+        print "Number of remaining guesses is ",(7-count)
+    
+        if secret_number>g:
+            print "Higher"
+        elif secret_number<g:
+            print "Lower"
+        else :
+            print "Correct! You win!"
+            count=0
+            range100()  
+        
+        while count==7:
+            print "You lose!"
+        
+            count =0
+            range100()
+            
+    else:
+        
+        count+=1
+        print "Number of remaining guesses is ",(10-count)
+    
+        if secret_number>g:
+            print "Higher"
+        elif secret_number<g:
+            print "Lower"
+        else :
+            print "Correct! You win!"
+            count=0   
+            range1000()                        
+        while count==10:  
+            print "You lose!"        
+            count=0
+            range1000()
+   
+   
+        
+    # main game logic goes here	
+   
+   
+
+    
+# create frame
+
+frame=simplegui.create_frame("Guess the number",200,200)
+# register event handlers for control elements and start frame
+button100=frame.add_button("Range is [0,100)",range100)
+button1000=frame.add_button("Range is [0,1000)",range1000)
+guess=frame.add_input("please enter your guess!",input_guess,50)
+
+# call new_game 
+new_game()
+
+
+# always remember to check your completed program against the grading rubric
+
+
+
